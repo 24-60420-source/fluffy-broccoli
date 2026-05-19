@@ -1,0 +1,1086 @@
+import { useState } from "react";
+
+const modules = [
+  {
+    id: 1,
+    title: "Setting Goals for Success",
+    icon: "🎯",
+    color: "#e8534a",
+    accent: "#ff8a80",
+    content: [
+      {
+        heading: "What is a Goal?",
+        text: "A goal is the desired outcome anticipated by a person or organization. It may be a long-term vision or a short-term outcome achievable through careful planning, execution, and evaluation. Goal setting establishes a standard or objective to serve as the target of one's actions."
+      },
+      {
+        heading: "Why Goals Matter",
+        text: "Goals help us concentrate our energy, arrange strategies, and consciously live a purpose-centered life. Goals influence performance by: directing attention, mobilizing effort, increasing determination, and encouraging plan development."
+      },
+      {
+        heading: "Goal-Setting Theory (Edwin Locke)",
+        text: "Goal-setting theory refers to the effects of setting goals on subsequent performance. Locke found that individuals who set specific, difficult goals performed better than those who set general, easy goals. He proposed 5 principles: Clarity, Challenge, Commitment, Feedback, and Task Complexity."
+      },
+      {
+        heading: "The Five Golden Rules",
+        text: "1. Set Goals That Motivate You\n2. Set SMART Goals\n3. Set Goals in Writing\n4. Make an Action Plan\n5. Stick With It!"
+      },
+      {
+        heading: "SMART Goals",
+        text: "SMART stands for Specific, Measurable, Achievable, Relevant, and Time-bound. Setting SMART goals increases your odds of success by clearly defining what you want and why you want it in the first place."
+      }
+    ],
+    quiz: [
+      {
+        q: "Goal-setting theory refers to the effects of setting goals on what?",
+        choices: ["Past performance", "Subsequent performance", "Teacher evaluation", "Group behavior"],
+        answer: 1,
+        explanation: "Goal-setting theory refers to the effects of setting goals on subsequent (future) performance, as studied by Edwin Locke."
+      },
+      {
+        q: "Who proposed the five basic principles of goal-setting?",
+        choices: ["Abraham Maslow", "Carl Rogers", "Edwin Locke", "Albert Bandura"],
+        answer: 2,
+        explanation: "Researcher Edwin Locke proposed the five basic principles: clarity, challenge, commitment, feedback, and task complexity."
+      },
+      {
+        q: "Which of the following is NOT one of Locke's five goal-setting principles?",
+        choices: ["Clarity", "Challenge", "Competition", "Commitment"],
+        answer: 2,
+        explanation: "The five principles are Clarity, Challenge, Commitment, Feedback, and Task Complexity — not Competition."
+      },
+      {
+        q: "According to Locke, who performs better?",
+        choices: ["Those with easy goals", "Those with no goals", "Those with specific, difficult goals", "Those with group goals"],
+        answer: 2,
+        explanation: "Locke found that individuals who set specific, difficult goals performed better than those who set general, easy goals."
+      },
+      {
+        q: "What does SMART in goal-setting stand for?",
+        choices: ["Simple, Manageable, Achievable, Realistic, Timely", "Specific, Measurable, Achievable, Relevant, Time-bound", "Strategic, Motivating, Actionable, Relevant, Trackable", "Specific, Motivating, Attainable, Reasonable, Tangible"],
+        answer: 1,
+        explanation: "SMART stands for Specific, Measurable, Achievable, Relevant, and Time-bound."
+      },
+      {
+        q: "Which of the Five Golden Rules says to 'put deliberate effort into meeting this goal'?",
+        choices: ["Set Goals That Motivate You", "Set Goals in Writing", "Stick With It!", "Make an Action Plan"],
+        answer: 2,
+        explanation: "Stick With It! means putting deliberate effort into meeting your goal and not giving up."
+      },
+      {
+        q: "Goals help concentrate energy and provide a sense of what?",
+        choices: ["Failure", "Superiority", "Accomplishment", "Relaxation"],
+        answer: 2,
+        explanation: "Goals provide us a sense of accomplishment while helping us concentrate energy and arrange strategies."
+      },
+      {
+        q: "Goal setting establishes a standard or objective to serve as a _____ of one's actions.",
+        choices: ["Result", "Target", "Punishment", "Barrier"],
+        answer: 1,
+        explanation: "Goal setting establishes a standard or objective to serve as the TARGET of one's actions."
+      },
+      {
+        q: "Goals influence performance by mobilizing ___.",
+        choices: ["Resources", "Money", "Effort", "Peers"],
+        answer: 2,
+        explanation: "Goals influence performance by directing attention, mobilizing EFFORT, increasing determination, and encouraging plan development."
+      },
+      {
+        q: "Which principle of goal-setting is concerned with making sure you clearly understand and accept your goal?",
+        choices: ["Clarity", "Challenge", "Commitment", "Feedback"],
+        answer: 2,
+        explanation: "Commitment refers to the degree to which a person is dedicated to reaching the goal — clearly accepting and owning it."
+      }
+    ]
+  },
+  {
+    id: 2,
+    title: "Material Self",
+    icon: "🛍️",
+    color: "#7b4fa6",
+    accent: "#ce93d8",
+    content: [
+      {
+        heading: "What is the Material Self?",
+        text: "The Material Self suggests that the environment and surroundings affect what we think we need versus what we really need. Identities can be reflected on the possessions people have. Material possessions signify some aspects of one's sense of self and identity."
+      },
+      {
+        heading: "Factors in Purchasing Decisions",
+        text: "Decisions in purchasing items and services depend on: Financial Constraints, Availability of Items and Services, and Influence of Family and Friends. However, the most important factor is determining whether items fall under Needs (important for survival) or Wants (synonymous with luxuries)."
+      },
+      {
+        heading: "Utility vs. Significance",
+        text: "In acquiring material goods, people consider: Utility — concerned with how things serve a practical purpose; and Significance — concerned with the meaning assigned to the object and how objects become powerful symbols or icons."
+      },
+      {
+        heading: "Four Functions of Material Possessions",
+        text: "1. Instrumental Functions — relate to functional properties (e.g., a pick-up car for family/business)\n2. Social Symbolic Functions — signify personal qualities, social standing, group affiliation\n3. Categorical Functions — communicate group membership or status\n4. Self-Expression Functions — reflect a person's unique qualities, values, or attitudes"
+      },
+      {
+        heading: "Extended Self & Consumer Behavior",
+        text: "The extended self envisions that certain possessions and other people are seen as part of us — they extend our identity beyond our mind and body. When they are damaged, die, or are lost, we feel their loss as an injury to the self. Objects become part of the self through: Appropriating/controlling an object, Creating it, or Knowing it."
+      }
+    ],
+    quiz: [
+      {
+        q: "The Material Self suggests that _____ affect what we think we need versus what we really need.",
+        choices: ["Friends and family", "Environment and surroundings", "Financial constraints", "Social media"],
+        answer: 1,
+        explanation: "The Material Self suggests that the environment and surroundings affect what we think we need versus what we really need."
+      },
+      {
+        q: "Which function of material possessions relates to the functional properties of a product?",
+        choices: ["Social Symbolic", "Categorical", "Instrumental", "Self-Expression"],
+        answer: 2,
+        explanation: "Instrumental functions relate to the functional properties of a product, e.g., buying a pick-up car for family and business use."
+      },
+      {
+        q: "Buying the latest phone to show others how cool you are is an example of which function?",
+        choices: ["Instrumental", "Social Symbolic", "Categorical", "Self-Expression"],
+        answer: 1,
+        explanation: "Social Symbolic functions signify personal qualities, social standing, and group affiliation — like buying a phone to appear cool."
+      },
+      {
+        q: "The concept of 'extended self' means possessions _____.",
+        choices: ["Are only for practical use", "Extend our identity beyond our mind and body", "Should be shared with others", "Have no psychological significance"],
+        answer: 1,
+        explanation: "The extended self formulation envisions that certain possessions are seen to be part of us, extending our identity beyond our mind and body alone."
+      },
+      {
+        q: "Which is the most important factor in determining whether to purchase something?",
+        choices: ["Brand name", "Color and design", "Whether it is a Need or a Want", "Price comparison"],
+        answer: 2,
+        explanation: "The most important factor is determining whether items fall under Needs (important for survival) or Wants (luxuries)."
+      },
+      {
+        q: "Collecting Hello Kitty items to represent yourself is an example of which function?",
+        choices: ["Instrumental", "Categorical", "Social Symbolic", "Self-Expression"],
+        answer: 3,
+        explanation: "Self-expression functions reflect a person's unique qualities, values, or attitudes — like collecting Hello Kitty items as personal identity."
+      },
+      {
+        q: "Wants are synonymous with _____.",
+        choices: ["Necessities", "Survival items", "Luxuries", "Basic goods"],
+        answer: 2,
+        explanation: "Wants are synonymous with luxuries — people buy them for reasons that do not warrant necessity."
+      },
+      {
+        q: "Which function refers to using possessions to communicate group membership or status?",
+        choices: ["Instrumental", "Self-Expression", "Categorical", "Social Symbolic"],
+        answer: 2,
+        explanation: "Categorical functions refer to the extent to which possessions communicate group membership or status."
+      },
+      {
+        q: "Possessions tell a lot about their _____.",
+        choices: ["Price tags", "Owners", "Countries of origin", "Brands"],
+        answer: 1,
+        explanation: "According to the Material Self concept, possessions tell a lot about their owners and reflect their identity."
+      },
+      {
+        q: "When a possession we love is lost or damaged, we feel it as an injury to the _____.",
+        choices: ["Wallet", "Social status", "Self", "Community"],
+        answer: 2,
+        explanation: "When items that extend the self are damaged, die, or are lost, we feel their loss as an injury to the self."
+      }
+    ]
+  },
+  {
+    id: 3,
+    title: "Spiritual Self",
+    icon: "🕊️",
+    color: "#2e7d6b",
+    accent: "#80cbc4",
+    content: [
+      {
+        heading: "Spirituality vs. Religiosity",
+        text: "Spirituality is concerned with the sacred, as distinguished from material matters. It is often individual rather than collective and does not require a distinctive format or traditional organization.\n\nReligiosity is the degree by which one is affiliated with an organized religion — in terms of participation in prescribed rituals, practices, connection with its beliefs, and involvement with its community of believers."
+      },
+      {
+        heading: "Religion (Giddens, 2006)",
+        text: "Religion is a cultural system of commonly shared beliefs and rituals that provide a sense of ultimate meaning by creating an idea of reality that is sacred, all-encompassing and supernatural. Key elements: (1) Culture, (2) Ritualized practices, (3) Providing sense of purpose."
+      },
+      {
+        heading: "Animism in the Philippines",
+        text: "Filipinos originally believed in Animism — a belief that all objects have spirits. They praised trees, plants, sun, moon, stars, and other living and non-living things. Evidence includes the Manunggul Jar. The dead were honored through carved images: Tagalog: 'larawan' or 'likha'; Bisaya: 'diwata'; Ifugao: 'bul-ol'."
+      },
+      {
+        heading: "Ritual",
+        text: "A ritual is a structured, repeated sequence of actions or words that holds symbolic, social significance. It is a religious or solemn ceremony consisting of a series of actions performed according to prescribed order. Purposes include: ensuring a good harvest, asking for guidance from ancestors, healing the sick, and bringing good luck."
+      },
+      {
+        heading: "Filipino Spiritual Figures",
+        text: "Sorcerer: Generally considered an evil figure, one who deals in matters clients would keep secret. Filipino term is Manggagaway.\n\nMangkukulam: A person who uses black magic or spells on a victim.\n\nAlbularyo/Mananambal: Practitioner of traditional medicine; witch doctor, folk healer, or medicine man."
+      }
+    ],
+    quiz: [
+      {
+        q: "Animism is defined as a belief that _____.",
+        choices: ["Only humans have souls", "All objects have spirits", "God controls everything", "Prayers heal diseases"],
+        answer: 1,
+        explanation: "Animism is the belief that all objects — including trees, plants, sun, moon, and stars — have spirits."
+      },
+      {
+        q: "What is the Filipino term for a sorcerer?",
+        choices: ["Albularyo", "Mangkukulam", "Manggagaway", "Mananambal"],
+        answer: 2,
+        explanation: "Manggagaway is the Filipino term for sorcerer — generally considered an evil figure who deals in secret matters."
+      },
+      {
+        q: "Religiosity refers to the degree by which one is affiliated with _____.",
+        choices: ["Spiritual practices", "An organized religion", "Superstitious beliefs", "Ancestral worship"],
+        answer: 1,
+        explanation: "Religiosity is the degree by which one is affiliated with an organized religion in terms of participation in prescribed rituals and practices."
+      },
+      {
+        q: "A ritual is best described as a _____ sequence of actions or words with symbolic, social significance.",
+        choices: ["Random, spontaneous", "Structured, repeated", "Creative, improvised", "Long, complicated"],
+        answer: 1,
+        explanation: "A ritual is a structured, repeated sequence of actions or words that holds symbolic, social significance."
+      },
+      {
+        q: "In Tagalog, carved images honoring the dead are called _____.",
+        choices: ["Diwata", "Bul-ol", "Larawan or Likha", "Kaluluwa"],
+        answer: 2,
+        explanation: "In Tagalog, these images are called 'larawan' or 'likha'; in Bisaya they are called 'diwata'; and in Ifugao, 'bul-ol'."
+      },
+      {
+        q: "Who defined religion as a 'cultural system of commonly shared beliefs and rituals'?",
+        choices: ["Freud", "Maslow", "Giddens", "Locke"],
+        answer: 2,
+        explanation: "Giddens (2006) defined religion as a cultural system of commonly shared beliefs and rituals providing a sense of ultimate meaning."
+      },
+      {
+        q: "Spirituality, unlike religion, is often _____.",
+        choices: ["Collective and structured", "Individual rather than collective", "Required by law", "Only found in churches"],
+        answer: 1,
+        explanation: "In contrast to religion, spirituality is often individual rather than collective and does not require a distinctive format or traditional organization."
+      },
+      {
+        q: "The Mangkukulam is a person who _____.",
+        choices: ["Heals using traditional medicine", "Uses black magic or spells on a victim", "Leads religious ceremonies", "Interprets dreams"],
+        answer: 1,
+        explanation: "The Mangkukulam is a person who uses black magic or spells on a victim."
+      },
+      {
+        q: "The Albularyo/Mananambal is best described as a _____.",
+        choices: ["Sorcerer", "Black magic practitioner", "Traditional medicine healer / folk healer", "Spirit medium"],
+        answer: 2,
+        explanation: "The Albularyo/Mananambal is a practitioner of traditional medicine — also called witch doctor, folk healer, or medicine man."
+      },
+      {
+        q: "The Philippines is the only _____ country in Southeast Asia.",
+        choices: ["Islamic", "Buddhist", "Hindu", "Christian"],
+        answer: 3,
+        explanation: "The Philippines is the only Christian country in Southeast Asia, introduced through Spanish colonization."
+      }
+    ]
+  },
+  {
+    id: 4,
+    title: "Digital Self",
+    icon: "💻",
+    color: "#1565c0",
+    accent: "#90caf9",
+    content: [
+      {
+        heading: "The Self in the Digital World",
+        text: "The millennial generation is known as digital natives because they were born in an era of rapid technological advancement. As a result, daily life is almost always dependent on technology, especially the internet, which provides a venue for presenting identities through social media platforms."
+      },
+      {
+        heading: "Digital Citizenship",
+        text: "Digital citizenship refers to the norms of appropriate and responsible behavior towards technology use. It is anchored in 3 general principles: Respecting, Educating, and Protecting oneself and others. It serves the purpose of regulating human behavior in a highly technological and digital world."
+      },
+      {
+        heading: "The Digital Self",
+        text: "The Digital Self is generated through social media and online activities, using content (what we post: social media, blog posts, playlists) and the associated metadata (where, when and how we post, and the frequency)."
+      },
+      {
+        heading: "Online Disinhibition",
+        text: "Online disinhibition is defined as the lack of restraint one feels when communicating online compared to communicating in person. Some individuals lose inhibitions in social interactions because of anonymity — being present only in the virtual space."
+      },
+      {
+        heading: "Why We Have a Digital Self",
+        text: "1. We want to meet the expectations of others\n2. We want to boost our self-esteem\n3. To feel a sense of belonging\n4. A bigger sense of freedom\n5. Striving to be our ideal selves"
+      },
+      {
+        heading: "Electronic Responsibility",
+        text: "Electronic responsibility refers to being responsible for one's actions and deeds online — practicing digital citizenship and respecting others in the digital space."
+      }
+    ],
+    quiz: [
+      {
+        q: "Digital citizenship refers to the norms of _____ behavior towards technology use.",
+        choices: ["Aggressive and competitive", "Appropriate and responsible", "Creative and expressive", "Private and anonymous"],
+        answer: 1,
+        explanation: "Digital citizenship refers to the norms of appropriate and responsible behavior towards technology use."
+      },
+      {
+        q: "Online disinhibition is defined as the _____.",
+        choices: ["Ability to code online", "Lack of restraint when communicating online", "Fear of social media", "Desire to be anonymous"],
+        answer: 1,
+        explanation: "Online disinhibition is defined as the lack of restraint one feels when communicating online in comparison to communicating in person."
+      },
+      {
+        q: "The Digital Self is generated through _____.",
+        choices: ["Dreams and imagination", "Social media and online activities", "Physical appearance", "Academic performance"],
+        answer: 1,
+        explanation: "The Digital Self is generated through social media and online activities, including content and associated metadata."
+      },
+      {
+        q: "Which of the following is NOT one of the 3 principles of Digital Citizenship?",
+        choices: ["Respecting", "Educating", "Entertaining", "Protecting"],
+        answer: 2,
+        explanation: "Digital citizenship is anchored in: Respecting, Educating, and Protecting oneself and others — not Entertaining."
+      },
+      {
+        q: "Electronic responsibility refers to being responsible for one's actions and deeds _____.",
+        choices: ["In school", "At work", "Online", "At home"],
+        answer: 2,
+        explanation: "Electronic responsibility refers to responsibility for one's actions and deeds online in the digital world."
+      },
+      {
+        q: "Why do individuals sometimes lose their inhibitions online?",
+        choices: ["They have more friends online", "Because of anonymity in the virtual space", "The internet is faster", "They feel more intelligent"],
+        answer: 1,
+        explanation: "Some individuals lose their inhibitions online because of anonymity — being present only in the virtual space."
+      },
+      {
+        q: "Millennials are known as digital natives because _____.",
+        choices: ["They invented the internet", "They were born during rapid technological advancement", "They use technology at work", "They are the smartest generation"],
+        answer: 1,
+        explanation: "The millennial generation is called digital natives because they were born in an era of rapid technological advancement."
+      },
+      {
+        q: "Which of the following is a reason why we have a digital self?",
+        choices: ["To avoid real-life relationships", "To strive to be our ideal selves", "To spread misinformation", "To escape responsibilities"],
+        answer: 1,
+        explanation: "One of the reasons is striving to be our ideal selves — the digital self allows expression of the person we want to be."
+      },
+      {
+        q: "The metadata of the Digital Self includes _____.",
+        choices: ["Profile pictures and names", "Where, when, and how we post", "Passwords and security details", "What apps we download"],
+        answer: 1,
+        explanation: "The Digital Self includes content (what we post) and metadata — where, when, and how we post, as well as the frequency."
+      },
+      {
+        q: "According to the module, technology need not _____ the society and people's lives.",
+        choices: ["Help", "Connect", "Control", "Entertain"],
+        answer: 2,
+        explanation: "The module states that technology offers limitless opportunities but 'technology need not control the society and people's lives.'"
+      }
+    ]
+  },
+  {
+    id: 5,
+    title: "Political Self",
+    icon: "🗳️",
+    color: "#e65100",
+    accent: "#ffcc80",
+    content: [
+      {
+        heading: "What is Politics?",
+        text: "Politics refers to the actions or activities concerned with achieving and using power in a nation or society. It is also defined as the ways that power is shared in an organization and the ways it is affected by personal relationships. Politics implies: it is concerned with power, it functions based on social-economic-cultural context, the political is also personal, and politics goes hand in hand with society."
+      },
+      {
+        heading: "Aristotle's View",
+        text: "Aristotle famously said: 'Man is, by nature, a political animal.' This means man is a social being and people are naturally drawn to various political involvements to satisfy their social needs."
+      },
+      {
+        heading: "Political Self",
+        text: "The Political Self is not only shaped by one's political affiliation or beliefs. One's sense of accountability should be manifested in promoting certain advocacies through healthy political engagement. This is aligned with the concept of active citizenship."
+      },
+      {
+        heading: "Active Citizenship",
+        text: "Active citizenship refers to the structured forms of engagement with political processes and everyday forms of participation in society. It is also defined as the process of sharing decisions which affect one's life and the life of a community. Active citizenship: is anchored on cognitive and behavioral engagement, is a practice of democracy, fosters social relatedness and belongingness."
+      },
+      {
+        heading: "Democracy",
+        text: "Democracy should not only be thought of as a form of government — it is a social construct that fosters social relatedness and belongingness. Participation is the fundamental right of citizenship."
+      }
+    ],
+    quiz: [
+      {
+        q: "Aristotle described man as, by nature, a _____.",
+        choices: ["Rational animal", "Political animal", "Social animal", "Spiritual animal"],
+        answer: 1,
+        explanation: "Aristotle famously said: 'Man is, by nature, a political animal,' meaning people are naturally drawn to political involvements."
+      },
+      {
+        q: "Active citizenship refers to _____ forms of engagement with political processes.",
+        choices: ["Random and informal", "Structured", "Optional and voluntary", "Academic"],
+        answer: 1,
+        explanation: "Active citizenship refers to the structured forms of engagement with political processes and everyday forms of participation in society."
+      },
+      {
+        q: "Politics is primarily concerned with achieving and using _____.",
+        choices: ["Wealth", "Fame", "Power", "Education"],
+        answer: 2,
+        explanation: "Politics refers to the actions or activities concerned with achieving and using power in a nation or society."
+      },
+      {
+        q: "The Political Self is shaped by which of the following?",
+        choices: ["Only political affiliation", "Only one's beliefs", "Both political affiliation and advocacies through healthy engagement", "Only government policy"],
+        answer: 2,
+        explanation: "The Political Self is not only shaped by political affiliation — it also includes accountability and promoting advocacies through healthy political engagement."
+      },
+      {
+        q: "Participation is the fundamental right of _____.",
+        choices: ["Politicians", "Teachers", "Citizenship", "Leaders"],
+        answer: 2,
+        explanation: "Participation is the fundamental right of citizenship, as emphasized in the module on Political Self."
+      },
+      {
+        q: "Active citizenship is a practice of _____.",
+        choices: ["Capitalism", "Totalitarianism", "Democracy", "Socialism"],
+        answer: 2,
+        explanation: "Active citizenship is a practice of democracy — it fosters social relatedness and belongingness."
+      },
+      {
+        q: "Democracy should be thought of as a _____.",
+        choices: ["Form of government only", "Social construct", "Political party", "Religious system"],
+        answer: 1,
+        explanation: "Democracy should not only be thought of as a form of government — it is a social construct that fosters social relatedness and belongingness."
+      },
+      {
+        q: "Active citizenship is anchored on one's _____ engagement.",
+        choices: ["Financial", "Emotional", "Cognitive and behavioral", "Spiritual"],
+        answer: 2,
+        explanation: "Active citizenship is anchored on one's cognitive and behavioral engagement to participate in formal and informal political activities."
+      },
+      {
+        q: "People are naturally drawn to political involvement to satisfy their _____ needs.",
+        choices: ["Financial", "Social", "Psychological", "Spiritual"],
+        answer: 1,
+        explanation: "According to Aristotle, people are naturally drawn to political involvements to satisfy their social needs."
+      },
+      {
+        q: "The Political Self implies that the political is also _____.",
+        choices: ["Separate from personal life", "Personal", "Only about elections", "Only about laws"],
+        answer: 1,
+        explanation: "One of the implications of politics imbued in man is that 'the political is also personal.'"
+      }
+    ]
+  },
+  {
+    id: 6,
+    title: "Managing and Caring for the Self",
+    icon: "🧠",
+    color: "#00695c",
+    accent: "#a5d6a7",
+    content: [
+      {
+        heading: "The Brain as Control Unit",
+        text: "The brain serves as the control unit of the body. Human beings' physiological, behavioral, and cognitive functions depend on it. The brain acts as a dense network of fiber pathways consisting of approximately 100 billion neurons. The three principle parts are: the stem, cerebellum, and cerebrum. The cerebrum is the most important in learning."
+      },
+      {
+        heading: "How Learning Happens",
+        text: "Learning is simply what the brain does. It is a physical process in which new knowledge is represented by new brain cell connections. Sensory information is transmitted by synapses along neural pathways and stored temporarily in short-term memory, then processed and stored in long-term memory. Memory and recall are strengthened by frequency and recency."
+      },
+      {
+        heading: "Metacognition",
+        text: "Metacognition is often defined as 'thinking about your own thinking.' Coined by John H. Flavell in 1979. Meta means 'beyond' so it means beyond thinking. It is a person's awareness of their own thoughts and their ability to control it. Metacognition has two components: Metacognitive Knowledge and Metacognitive Regulation. Metacognitive knowledge has three types: Declarative, Procedural, and Strategy."
+      },
+      {
+        heading: "Self-Regulated Learning (Zimmerman, 2001)",
+        text: "Students who are conscious of their strengths and weaknesses and can induce themselves to undertake and improve their learning are self-regulated learners. When students become engaged, they take greater responsibility for their learning and academic performance improves. The SRL model uses a continuing sequence of planning, practice, and evaluation."
+      },
+      {
+        heading: "Self-Care",
+        text: "Self-care is any activity that we do deliberately in order to take care of our mental, emotional, and physical health. Good self-care is key to improved mood and reduced anxiety. As Agnes Wainman explained, self-care is 'something that refuels us, rather than takes from us.' It is NOT something we force ourselves to do or don't enjoy doing."
+      }
+    ],
+    quiz: [
+      {
+        q: "The brain serves as the _____ of the body.",
+        choices: ["Communication center", "Control unit", "Energy source", "Emotional hub"],
+        answer: 1,
+        explanation: "The brain serves as the control unit of the body — physiological, behavioral, and cognitive functions all depend on it."
+      },
+      {
+        q: "Metacognition is defined as _____.",
+        choices: ["Learning through repetition", "Thinking about your own thinking", "Memorizing information", "Studying with a group"],
+        answer: 1,
+        explanation: "Metacognition is often defined as 'thinking about your own thinking' — coined by John H. Flavell in 1979."
+      },
+      {
+        q: "Who coined the term 'metacognition' in 1979?",
+        choices: ["Zimmerman", "Locke", "John H. Flavell", "Giddens"],
+        answer: 2,
+        explanation: "Metacognition was termed by American developmental psychologist John H. Flavell in 1979."
+      },
+      {
+        q: "Memory and recall are strengthened by _____ and recency.",
+        choices: ["Intelligence", "Emotion", "Frequency", "Repetition"],
+        answer: 2,
+        explanation: "The more we practice and rehearse something new and the more recently we have practiced, the easier recall becomes — strengthened by frequency and recency."
+      },
+      {
+        q: "Self-care is any activity we do deliberately to take care of our _____ health.",
+        choices: ["Physical health only", "Mental health only", "Mental, emotional, and physical health", "Academic health"],
+        answer: 2,
+        explanation: "Self-care is any activity done deliberately to take care of mental, emotional, and physical health."
+      },
+      {
+        q: "The Self-Regulated Learning model uses a continuing sequence of planning, practice, and _____.",
+        choices: ["Testing", "Evaluation", "Memorization", "Group work"],
+        answer: 1,
+        explanation: "The SRL model (Zimmerman, 2001) uses a continuing sequence of planning, practice, and evaluation."
+      },
+      {
+        q: "The cerebrum is the most important part of the brain for _____.",
+        choices: ["Physical movement", "Learning and higher-ordered functions", "Breathing", "Balance"],
+        answer: 1,
+        explanation: "The cerebrum is the most important in learning, since this is where higher-ordered functions like memory and reasoning occur."
+      },
+      {
+        q: "According to Agnes Wainman, self-care is something that _____ us.",
+        choices: ["Exhausts", "Refuels", "Challenges", "Isolates"],
+        answer: 1,
+        explanation: "Agnes Wainman explained that self-care is 'something that refuels us, rather than takes from us.'"
+      },
+      {
+        q: "Which type of memory acts as a 'receiving center' for flood of sensory information?",
+        choices: ["Long-term memory", "Short-term memory", "Emotional memory", "Sensory memory"],
+        answer: 1,
+        explanation: "Short-term memory is a volatile region of the brain that acts like a receiving center for the flood of sensory information encountered in daily life."
+      },
+      {
+        q: "The brain has approximately how many neurons?",
+        choices: ["1 billion", "10 billion", "100 billion", "1 trillion"],
+        answer: 2,
+        explanation: "The brain acts as a dense network of fiber pathways consisting of approximately 100 billion neurons."
+      }
+    ]
+  },
+  {
+    id: 7,
+    title: "Taking Charge of One's Health",
+    icon: "❤️‍🩹",
+    color: "#c62828",
+    accent: "#ef9a9a",
+    content: [
+      {
+        heading: "Definition of Health (WHO)",
+        text: "The World Health Organization defines health as 'a state of complete physical, mental and social well-being and not merely the absence of disease or infirmity.' Health is not only about avoiding disease — it is also about physical, mental, and social wellbeing."
+      },
+      {
+        heading: "Wellness",
+        text: "Wellness is a holistic concept encompassing multiple dimensions of well-being. Types of Wellness include: Physical, Emotional, Intellectual, Social, Spiritual, Environmental, and Occupational wellness. It goes beyond the absence of illness to active pursuit of activities and choices that lead to a healthier life."
+      },
+      {
+        heading: "Managing Stress",
+        text: "Stress is anything that alters your natural balance. When stress is present, your body and mind must attend to it to maintain balance. Your body reacts to stress by releasing hormones that help you cope. Two sources of stress: (1) External triggers (e.g., transitioning to college, parents divorcing) and (2) Internal triggers (e.g., placing high expectations on yourself)."
+      },
+      {
+        heading: "Signs of Too Much Stress",
+        text: "Common indicators include: difficulty concentrating, increased worrying, trouble completing assignments on time, tension, headaches, tight muscles, not going to class, changes in eating habits (e.g., stress eating), short temper, changes in sleeping habits."
+      },
+      {
+        heading: "Healthy Lifestyles for College Students",
+        text: "1. Stick to a solid sleep schedule\n2. Learn to say no\n3. Eat regular meals\n4. Find an exercise activity you love\n5. Stock up on healthy foods\n6. Stop procrastinating\n7. Try not to burn out"
+      },
+      {
+        heading: "Self-Care and Relaxation",
+        text: "Ways to reduce stress: practice time management, set specific goals, avoid procrastination, exercise regularly, practice good sleep habits, try mindfulness meditation, limit stimulants like caffeine, start a journal. Relaxation techniques: Breathing Exercise, Progressive Muscle Relaxation, Visual (Guided) Imagery."
+      }
+    ],
+    quiz: [
+      {
+        q: "According to WHO, health is a state of complete physical, mental, and _____ well-being.",
+        choices: ["Emotional", "Financial", "Social", "Spiritual"],
+        answer: 2,
+        explanation: "The WHO defines health as a state of complete physical, mental, and SOCIAL well-being — not merely the absence of disease."
+      },
+      {
+        q: "Stress is defined as anything that _____ your natural balance.",
+        choices: ["Improves", "Alters", "Maintains", "Enhances"],
+        answer: 1,
+        explanation: "Stress is anything that alters your natural balance — your body and mind must then attend to it to maintain balance."
+      },
+      {
+        q: "Which of the following is an EXTERNAL trigger of stress?",
+        choices: ["High self-expectations", "Perfectionism", "Transitioning to college", "Negative self-talk"],
+        answer: 2,
+        explanation: "External triggers include situations like transitioning to college or parents getting a divorce — outside circumstances."
+      },
+      {
+        q: "Which of the following is a sign of too much stress?",
+        choices: ["Increased productivity", "Better sleep", "Stress eating and changes in eating habits", "More focus in class"],
+        answer: 2,
+        explanation: "Changes in eating habits (e.g., stress eating) is one of the common indicators of experiencing too much stress."
+      },
+      {
+        q: "Which healthy lifestyle tip for college students involves not delaying tasks?",
+        choices: ["Eat regular meals", "Stop procrastinating", "Learn to say no", "Find exercise you love"],
+        answer: 1,
+        explanation: "Stop procrastinating is one of the 7 healthy lifestyle tips — procrastination creates more mental and physical stress."
+      },
+      {
+        q: "Mindfulness is about noticing thoughts and feelings _____.",
+        choices: ["With judgment", "With criticism", "Without judgment", "With analysis"],
+        answer: 2,
+        explanation: "Mindfulness is about noticing our thoughts, feelings, or bodily sensations without judgment — it is a helpful tool in managing stress."
+      },
+      {
+        q: "Which relaxation technique involves controlling your breathing?",
+        choices: ["Progressive Muscle Relaxation", "Guided Imagery", "Breathing Exercise", "Journaling"],
+        answer: 2,
+        explanation: "Breathing Exercise is one of the relaxation techniques, along with Progressive Muscle Relaxation and Visual (Guided) Imagery."
+      },
+      {
+        q: "Regular physical activity helps manage stress because it helps burn off _____ generated by stress.",
+        choices: ["Cortisol", "Energy", "Negative thoughts", "Hunger"],
+        answer: 1,
+        explanation: "Exercise regularly helps manage stress — physical activity can help burn off the energy generated by stress."
+      },
+      {
+        q: "Which of the following is NOT a healthy lifestyle tip for college students listed in the module?",
+        choices: ["Stick to a solid sleep schedule", "Learn to say no", "Drink more coffee", "Try not to burn out"],
+        answer: 2,
+        explanation: "The 7 tips do not include drinking coffee. In fact, the module advises limiting stimulants like caffeine which can elevate stress response."
+      },
+      {
+        q: "Good self-care is key to improved _____ and reduced anxiety.",
+        choices: ["Grades", "Mood", "Income", "Popularity"],
+        answer: 1,
+        explanation: "Good self-care is key to improved MOOD and reduced anxiety, as stated in the module."
+      }
+    ]
+  }
+];
+
+export default function UTSReviewer() {
+  const [view, setView] = useState("home"); // home | module | quiz
+  const [activeModule, setActiveModule] = useState(null);
+  const [quizState, setQuizState] = useState({
+    current: 0,
+    selected: null,
+    answered: false,
+    score: 0,
+    done: false,
+    history: []
+  });
+
+  function startModule(mod) {
+    setActiveModule(mod);
+    setView("module");
+  }
+
+  function startQuiz(mod) {
+    setActiveModule(mod);
+    setQuizState({ current: 0, selected: null, answered: false, score: 0, done: false, history: [] });
+    setView("quiz");
+  }
+
+  function selectAnswer(idx) {
+    if (quizState.answered) return;
+    const q = activeModule.quiz[quizState.current];
+    const correct = idx === q.answer;
+    setQuizState(s => ({
+      ...s,
+      selected: idx,
+      answered: true,
+      score: correct ? s.score + 1 : s.score,
+      history: [...s.history, { selected: idx, correct }]
+    }));
+  }
+
+  function nextQuestion() {
+    const next = quizState.current + 1;
+    if (next >= activeModule.quiz.length) {
+      setQuizState(s => ({ ...s, done: true }));
+    } else {
+      setQuizState(s => ({ ...s, current: next, selected: null, answered: false }));
+    }
+  }
+
+  const accent = activeModule?.color || "#333";
+  const light = activeModule?.accent || "#888";
+
+  // HOME
+  if (view === "home") return (
+    <div style={{
+      minHeight: "100vh",
+      background: "linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)",
+      fontFamily: "'Georgia', serif",
+      padding: "0 0 40px"
+    }}>
+      <div style={{
+        textAlign: "center",
+        padding: "48px 24px 32px",
+        borderBottom: "1px solid rgba(255,255,255,0.08)"
+      }}>
+        <div style={{ fontSize: 14, letterSpacing: 6, color: "#a78bfa", textTransform: "uppercase", marginBottom: 12 }}>Final Exam Reviewer</div>
+        <h1 style={{ color: "#fff", fontSize: "clamp(1.8rem, 5vw, 2.8rem)", margin: "0 0 12px", fontWeight: 700, lineHeight: 1.2 }}>
+          Understanding the Self
+        </h1>
+        <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 15, margin: 0 }}>
+          7 Modules · 10 Quiz Items Each · Based on Your Pointers
+        </p>
+      </div>
+
+      <div style={{ maxWidth: 800, margin: "32px auto 0", padding: "0 20px" }}>
+        <div style={{
+          background: "rgba(167,139,250,0.1)",
+          border: "1px solid rgba(167,139,250,0.3)",
+          borderRadius: 12,
+          padding: "16px 20px",
+          marginBottom: 32,
+          fontSize: 13,
+          color: "rgba(255,255,255,0.7)",
+          lineHeight: 1.6
+        }}>
+          📌 <strong style={{color:"#a78bfa"}}>Exam Format:</strong> 60 points · Multiple Choice · Identification · Essay &nbsp;|&nbsp;
+          Focus on <strong style={{color:"#fff"}}>all 19 pointers</strong> including Goal-Setting Theory, Material Self, Spiritual Self, Digital Self, Political Self, Managing/Caring for Self, and Taking Charge of Health.
+        </div>
+
+        {modules.map(mod => (
+          <div key={mod.id} style={{
+            background: "rgba(255,255,255,0.04)",
+            border: `1px solid ${mod.color}44`,
+            borderLeft: `4px solid ${mod.color}`,
+            borderRadius: 12,
+            padding: "20px 24px",
+            marginBottom: 16,
+            display: "flex",
+            alignItems: "center",
+            gap: 20,
+            flexWrap: "wrap"
+          }}>
+            <div style={{ fontSize: 32, flexShrink: 0 }}>{mod.icon}</div>
+            <div style={{ flex: 1, minWidth: 180 }}>
+              <div style={{ color: "#fff", fontWeight: 700, fontSize: 17, marginBottom: 4 }}>{mod.title}</div>
+              <div style={{ color: "rgba(255,255,255,0.45)", fontSize: 13 }}>
+                {mod.content.length} topics · {mod.quiz.length} quiz items
+              </div>
+            </div>
+            <div style={{ display: "flex", gap: 10, flexShrink: 0 }}>
+              <button
+                onClick={() => startModule(mod)}
+                style={{
+                  background: `${mod.color}22`,
+                  color: mod.accent,
+                  border: `1px solid ${mod.color}66`,
+                  borderRadius: 8,
+                  padding: "8px 18px",
+                  fontSize: 13,
+                  cursor: "pointer",
+                  fontWeight: 600,
+                  transition: "all 0.2s"
+                }}
+              >📖 Review</button>
+              <button
+                onClick={() => startQuiz(mod)}
+                style={{
+                  background: mod.color,
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: 8,
+                  padding: "8px 18px",
+                  fontSize: 13,
+                  cursor: "pointer",
+                  fontWeight: 600
+                }}
+              >✏️ Quiz</button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  // MODULE REVIEWER
+  if (view === "module" && activeModule) return (
+    <div style={{
+      minHeight: "100vh",
+      background: "#0f0c29",
+      fontFamily: "'Georgia', serif",
+      paddingBottom: 60
+    }}>
+      {/* Header */}
+      <div style={{
+        background: `linear-gradient(135deg, ${activeModule.color}cc, ${activeModule.color}44)`,
+        padding: "28px 24px 24px",
+        borderBottom: `2px solid ${activeModule.color}`
+      }}>
+        <button onClick={() => setView("home")} style={{
+          background: "rgba(0,0,0,0.3)", color: "#fff", border: "none",
+          borderRadius: 6, padding: "6px 14px", cursor: "pointer", fontSize: 13, marginBottom: 16
+        }}>← Back</button>
+        <div style={{ fontSize: 36, marginBottom: 8 }}>{activeModule.icon}</div>
+        <h2 style={{ color: "#fff", margin: 0, fontSize: "clamp(1.4rem, 4vw, 2rem)", fontWeight: 700 }}>{activeModule.title}</h2>
+        <div style={{ color: "rgba(255,255,255,0.6)", fontSize: 13, marginTop: 6 }}>Module {activeModule.id} Reviewer</div>
+      </div>
+
+      <div style={{ maxWidth: 720, margin: "0 auto", padding: "32px 20px 0" }}>
+        {activeModule.content.map((section, i) => (
+          <div key={i} style={{
+            background: "rgba(255,255,255,0.04)",
+            border: `1px solid ${activeModule.color}33`,
+            borderLeft: `4px solid ${activeModule.color}`,
+            borderRadius: 12,
+            padding: "20px 24px",
+            marginBottom: 20
+          }}>
+            <div style={{
+              color: activeModule.accent,
+              fontWeight: 700,
+              fontSize: 15,
+              marginBottom: 12,
+              textTransform: "uppercase",
+              letterSpacing: 1
+            }}>{section.heading}</div>
+            <div style={{
+              color: "rgba(255,255,255,0.82)",
+              fontSize: 15,
+              lineHeight: 1.75,
+              whiteSpace: "pre-line"
+            }}>{section.text}</div>
+          </div>
+        ))}
+
+        <button
+          onClick={() => startQuiz(activeModule)}
+          style={{
+            width: "100%",
+            background: activeModule.color,
+            color: "#fff",
+            border: "none",
+            borderRadius: 10,
+            padding: "16px",
+            fontSize: 16,
+            fontWeight: 700,
+            cursor: "pointer",
+            marginTop: 8
+          }}
+        >✏️ Take the Quiz for This Module</button>
+      </div>
+    </div>
+  );
+
+  // QUIZ
+  if (view === "quiz" && activeModule) {
+    const q = activeModule.quiz[quizState.current];
+
+    // Results screen
+    if (quizState.done) {
+      const pct = Math.round((quizState.score / activeModule.quiz.length) * 100);
+      const grade = pct >= 90 ? "🏆 Excellent!" : pct >= 75 ? "👍 Good Job!" : pct >= 60 ? "📚 Keep Studying!" : "💪 Review Again!";
+      return (
+        <div style={{
+          minHeight: "100vh",
+          background: "#0f0c29",
+          fontFamily: "'Georgia', serif",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: 24
+        }}>
+          <div style={{
+            maxWidth: 480,
+            width: "100%",
+            background: "rgba(255,255,255,0.05)",
+            border: `2px solid ${activeModule.color}`,
+            borderRadius: 20,
+            padding: "36px 32px",
+            textAlign: "center"
+          }}>
+            <div style={{ fontSize: 48, marginBottom: 16 }}>{activeModule.icon}</div>
+            <div style={{ color: activeModule.accent, fontSize: 14, letterSpacing: 3, textTransform: "uppercase", marginBottom: 8 }}>Quiz Complete</div>
+            <h2 style={{ color: "#fff", margin: "0 0 8px", fontSize: "1.6rem" }}>{activeModule.title}</h2>
+            <div style={{ fontSize: 52, fontWeight: 900, color: activeModule.color, margin: "20px 0 4px" }}>{pct}%</div>
+            <div style={{ color: "rgba(255,255,255,0.6)", fontSize: 15, marginBottom: 8 }}>
+              {quizState.score} / {activeModule.quiz.length} correct
+            </div>
+            <div style={{ color: "#fff", fontSize: 20, marginBottom: 28 }}>{grade}</div>
+
+            <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+              <button onClick={() => startQuiz(activeModule)} style={{
+                background: activeModule.color, color: "#fff", border: "none",
+                borderRadius: 8, padding: "12px 24px", fontSize: 14, fontWeight: 700, cursor: "pointer"
+              }}>🔄 Retry Quiz</button>
+              <button onClick={() => startModule(activeModule)} style={{
+                background: "rgba(255,255,255,0.1)", color: "#fff", border: `1px solid ${activeModule.color}66`,
+                borderRadius: 8, padding: "12px 24px", fontSize: 14, cursor: "pointer"
+              }}>📖 Review Notes</button>
+              <button onClick={() => setView("home")} style={{
+                background: "transparent", color: "rgba(255,255,255,0.5)", border: "1px solid rgba(255,255,255,0.2)",
+                borderRadius: 8, padding: "12px 24px", fontSize: 14, cursor: "pointer"
+              }}>🏠 Home</button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Question screen
+    return (
+      <div style={{
+        minHeight: "100vh",
+        background: "#0f0c29",
+        fontFamily: "'Georgia', serif",
+        padding: "0 0 60px"
+      }}>
+        {/* Header */}
+        <div style={{
+          background: `linear-gradient(to right, ${activeModule.color}88, transparent)`,
+          padding: "20px 24px",
+          borderBottom: `1px solid ${activeModule.color}44`,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: 12
+        }}>
+          <div>
+            <div style={{ color: activeModule.accent, fontSize: 12, textTransform: "uppercase", letterSpacing: 2, marginBottom: 4 }}>
+              {activeModule.icon} {activeModule.title}
+            </div>
+            <div style={{ color: "rgba(255,255,255,0.6)", fontSize: 13 }}>
+              Question {quizState.current + 1} of {activeModule.quiz.length}
+            </div>
+          </div>
+          <div style={{
+            background: `${activeModule.color}33`,
+            color: activeModule.accent,
+            borderRadius: 20,
+            padding: "6px 16px",
+            fontSize: 14,
+            fontWeight: 700
+          }}>Score: {quizState.score}</div>
+        </div>
+
+        {/* Progress bar */}
+        <div style={{ background: "rgba(255,255,255,0.08)", height: 4 }}>
+          <div style={{
+            background: activeModule.color,
+            height: "100%",
+            width: `${((quizState.current) / activeModule.quiz.length) * 100}%`,
+            transition: "width 0.3s"
+          }} />
+        </div>
+
+        <div style={{ maxWidth: 640, margin: "0 auto", padding: "32px 20px 0" }}>
+          {/* Question */}
+          <div style={{
+            background: `${activeModule.color}11`,
+            border: `1px solid ${activeModule.color}44`,
+            borderRadius: 14,
+            padding: "24px",
+            marginBottom: 24
+          }}>
+            <div style={{ color: "#fff", fontSize: "clamp(1rem, 3vw, 1.15rem)", lineHeight: 1.65, fontWeight: 600 }}>
+              {q.q}
+            </div>
+          </div>
+
+          {/* Choices */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            {q.choices.map((choice, i) => {
+              let bg = "rgba(255,255,255,0.05)";
+              let border = "rgba(255,255,255,0.12)";
+              let textColor = "rgba(255,255,255,0.85)";
+              let badge = null;
+
+              if (quizState.answered) {
+                if (i === q.answer) {
+                  bg = "rgba(76,175,80,0.2)";
+                  border = "#4caf50";
+                  textColor = "#a5d6a7";
+                  badge = "✓ Correct";
+                } else if (i === quizState.selected && i !== q.answer) {
+                  bg = "rgba(244,67,54,0.2)";
+                  border = "#f44336";
+                  textColor = "#ef9a9a";
+                  badge = "✗ Wrong";
+                }
+              }
+
+              return (
+                <button
+                  key={i}
+                  onClick={() => selectAnswer(i)}
+                  style={{
+                    background: bg,
+                    border: `1.5px solid ${border}`,
+                    borderRadius: 10,
+                    padding: "14px 18px",
+                    cursor: quizState.answered ? "default" : "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 12,
+                    textAlign: "left",
+                    transition: "all 0.2s"
+                  }}
+                >
+                  <div style={{
+                    width: 28, height: 28,
+                    borderRadius: "50%",
+                    background: i === q.answer && quizState.answered ? "#4caf50" :
+                                i === quizState.selected && quizState.answered && i !== q.answer ? "#f44336" :
+                                "rgba(255,255,255,0.1)",
+                    color: "#fff",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: 13,
+                    fontWeight: 700,
+                    flexShrink: 0
+                  }}>
+                    {["A","B","C","D"][i]}
+                  </div>
+                  <span style={{ color: textColor, fontSize: 14, lineHeight: 1.5, flex: 1 }}>{choice}</span>
+                  {badge && <span style={{
+                    fontSize: 12, fontWeight: 700,
+                    color: i === q.answer ? "#4caf50" : "#f44336",
+                    flexShrink: 0
+                  }}>{badge}</span>}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Explanation */}
+          {quizState.answered && (
+            <div style={{
+              marginTop: 20,
+              background: "rgba(255,255,255,0.04)",
+              border: `1px solid ${activeModule.color}44`,
+              borderLeft: `4px solid ${activeModule.color}`,
+              borderRadius: 10,
+              padding: "16px 20px"
+            }}>
+              <div style={{ color: activeModule.accent, fontSize: 12, textTransform: "uppercase", letterSpacing: 1, marginBottom: 6 }}>
+                💡 Explanation
+              </div>
+              <div style={{ color: "rgba(255,255,255,0.78)", fontSize: 14, lineHeight: 1.65 }}>
+                {q.explanation}
+              </div>
+            </div>
+          )}
+
+          {/* Next button */}
+          {quizState.answered && (
+            <button
+              onClick={nextQuestion}
+              style={{
+                width: "100%",
+                background: activeModule.color,
+                color: "#fff",
+                border: "none",
+                borderRadius: 10,
+                padding: "15px",
+                fontSize: 15,
+                fontWeight: 700,
+                cursor: "pointer",
+                marginTop: 20
+              }}
+            >
+              {quizState.current + 1 >= activeModule.quiz.length ? "See Results →" : "Next Question →"}
+            </button>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  return null;
+}
